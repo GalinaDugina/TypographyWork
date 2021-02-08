@@ -1,0 +1,17 @@
+﻿@inject UserManager<User> UserManager
+@using Microsoft.AspNetCore.Identity
+@model User
+
+@{
+    ViewBag.Title = "Личный кабинет";
+    Layout = "_Layout";
+}
+<div class="row">
+   
+    <div class="col-6">
+        <h2> Пользователь :@Model.UserName </h2>
+
+      
+    </div>
+</div>
+
