@@ -9,7 +9,12 @@
         <h2>Регистрация нового пользователя</h2>
         <form method="post" asp-controller="Account" asp-action="Register" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly"></div>
-            
+            <label asp-for="Role">В качестве кого регистрируетесь?</label>
+            <select id="list" class="form-control mb-4" asp-for="Role" onchange="change()">
+                <option ></option>
+                <option value="manager">менеджер</option>
+                <option value="economist">экономист</option>
+            </select>
             <div>
                 <span asp-validation-for="Email"></span>
                 <label id="username"></label><br/>

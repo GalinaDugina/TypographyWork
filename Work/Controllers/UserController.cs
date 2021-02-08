@@ -15,6 +15,15 @@ namespace Work.Controllers
         private WorkContext _db;
 
         public readonly IHostEnvironment _environment;
+
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, WorkContext db, IHostEnvironment environment)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _db = db;
+            _environment = environment;
+        }
+
         public IActionResult Index(string? userId )
         {
             if (userId == null)

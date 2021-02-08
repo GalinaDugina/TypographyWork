@@ -14,14 +14,14 @@ namespace Work.Controllers
         private readonly SignInManager<User> _signInManager;
         public readonly IHostEnvironment _environment;
        // private FileUploadService _fileUpload;
-        //private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IHostEnvironment environment, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _environment = environment;
-            //_roleManager = roleManager;
+            _roleManager = roleManager;
         }
 
         // GET
@@ -45,8 +45,8 @@ namespace Work.Controllers
 
                 if (result.Succeeded)
                 {
-                   // IdentityRole role = await _roleManager.FindByNameAsync(model.Role) ;
-                    //await _userManager.AddToRoleAsync(user, role.Name);
+                    IdentityRole role = await _roleManager.FindByNameAsync(model.Role) ;
+                    await _userManager.AddToRoleAsync(user, role.Name);
                    
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "User");
@@ -88,6 +88,7 @@ namespace Work.Controllers
                             return Redirect(model.ReturnUrl);
                         }
 
+                       
                         return RedirectToAction("Index", "User");
                     }
                 }
