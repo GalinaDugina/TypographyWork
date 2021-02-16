@@ -9,6 +9,7 @@ namespace Work.Models.Data
         public DbSet<Paper> Papers { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<PartOfSet> PartOfSets { get; set; }
 
         public WorkContext(DbContextOptions options) : base(options)
         {
